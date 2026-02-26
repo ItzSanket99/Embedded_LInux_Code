@@ -10,14 +10,16 @@ int main(){
 	// 0 - led_off
 	// 1 - led_on
 	// 2 - status
-	
+
 	int fd = open("tmp/cmdfifo", O_WRONLY);
 	if(fd == -1){
 		printf("failed to open fifo\n");
 		return 1;
 	}
 	
+	printf("0 - led_off, 1 - led_on, 2 - status\n");
 	while(1){
+		
 		scanf("%d",&n);
 		
 		if(write(fd, &n, sizeof(int)) == -1){
